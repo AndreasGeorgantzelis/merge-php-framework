@@ -4,8 +4,8 @@ services:
     image: mergeframework
     ports:
       - "80:80"
-    # volumes:
-    #   - ./app:/var/www/html
+    volumes:
+      - ./app:/var/www/html
     environment:
       MYSQL_DB_CONNECTION: test
       MYSQL_DB_NAME: test
