@@ -11,7 +11,7 @@ final class Framework
         $this->mergeRouter = new MergeRouter();
     }
 
-    public function router(): void
+    public function run(): void
     {
         $this->mergeRouter->route();
     }
