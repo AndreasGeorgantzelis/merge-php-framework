@@ -1,14 +1,18 @@
 <?php
 
-namespace App\src\Application;
+namespace app\src\Application;
 
- final class Framework
+final class Framework
 {
-    public function __construct(private MergeRouter $router)
-    {}
+    public MergeRouter $mergeRouter;
 
-    public function __invoke(): void
+    public function __construct()
     {
-        $this->router->route();
+        $this->mergeRouter = new MergeRouter();
+    }
+
+    public function router(): void
+    {
+        $this->mergeRouter->route();
     }
 }

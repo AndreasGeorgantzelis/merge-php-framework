@@ -1,11 +1,12 @@
 <?php
 
-namespace App\src\Application;
+namespace app\src\Application;
 use Bramus\Router\Router;
 class MergeRouter
 {
-    public function __construct(public Router $router) {
-
+    public Router $router;
+    public function __construct() {
+        $this->router = new Router();
     }
     public function route(): void {
 
