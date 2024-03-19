@@ -1,22 +1,21 @@
-version: "2"
-services:
-  mergeframeworkserver:
-    image: mergeframework
-    ports:
-      - "80:80"
-    volumes:
-      - ./app:/var/www/app
-      - ./app/public:/var/www/app/public
-    environment:
-      MYSQL_DB_CONNECTION: test
-      MYSQL_DB_NAME: test
-      MYSQL_USER: test
-      MYSQL_PASSWORD: test
-      SITE_URL: http://localhost
-    networks:
-      - impact
-    restart: always
+version: '3'
 
-networks:
-  impact:
-    driver: bridge
+services:
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/app/
+    links:
+      - php
+
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    volumes:
+      - .:/app/
