@@ -10,10 +10,8 @@ class MergeRouter
         $this->router = new Router();
         $this->routes = require_once __DIR__ . '/../../public/routes.php';
     }
-    public function addRoute(string $method, string $pattern, callable $callable): void {
-        $this->router->$method($pattern, $callable);
-    }
 
+    //todo : maybe split the following to matchRout and resolve
     public function resolve() : void {
         foreach ($this->routes as $route) {
             $method = $route[0] ?: "get";
