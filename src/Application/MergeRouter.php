@@ -8,10 +8,14 @@ class MergeRouter
     public function __construct() {
         $this->router = new Router();
     }
-    public function route(): void {
+    public function routes(): void {
 
         $this->router->get('/', function() {
             echo 'Hello World!';
+        });
+
+        $this->router->get('/hello/(\w+)', function($name) {
+            echo 'Hello ' . htmlentities($name);
         });
 
         $this->router->run();

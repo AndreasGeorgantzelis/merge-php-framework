@@ -13,6 +13,6 @@ final class Framework
 
     public function run(): void
     {
-        $this->mergeRouter->route();
+        $this->mergeRouter->routes();
     }
 }
