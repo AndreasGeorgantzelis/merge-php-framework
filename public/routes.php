@@ -4,9 +4,7 @@ return [
     [
         "get",
         "/",
-        function () {
-            echo "hello world";
-        }
+        new \app\Application\Controller\DummyController
     ],
     [
         "get",

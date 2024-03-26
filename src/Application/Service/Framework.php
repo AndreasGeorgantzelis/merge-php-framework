@@ -1,6 +1,7 @@
 <?php
+declare(strict_types=1);
 
-namespace app\Application;
+namespace app\Application\Service;
 
 final class Framework
 {
