@@ -4,7 +4,12 @@ return [
     [
         "get",
         "/",
-        new \app\Application\Controller\DummyController
+        new \app\Application\Controller\HomeController
+    ],
+    [
+        "get",
+        "/contact",
+        new \app\Application\Controller\ContactController
     ],
     [
         "get",
