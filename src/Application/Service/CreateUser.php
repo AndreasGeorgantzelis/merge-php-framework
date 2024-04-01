@@ -8,13 +8,20 @@ class CreateUser
     /**
      * @return void
      */
-    public function create()
+    public function createUser(int $userCount)
     {
-        $userFile = fopen("newfile.txt", "w") or die("Unable to open file!");
-        $txt = "John Doe\n";
-        fwrite($userFile, $txt);
-        $txt = "Jane Doe\n";
-        fwrite($userFile, $txt);
+        $directory = getcwd() . "/users/";
+        $userFilePath = $directory . 'user' . $userCount . '.json';
+        $userFile = fopen($userFilePath, "w") or die("Unable to open file!");
+        $json = '[
+    {
+      "username": "jane_smith",
+      "email": "jane@example.com",
+      "age": 25,
+      "city": "Los Angeles"
+    }
+]';
+        fwrite($userFile, $json);
         fclose($userFile);
     }
 
@@ -25,7 +32,6 @@ class CreateUser
     {
         $directory = getcwd() . "/users/";
         $filecount = 0;
-
         $files2 = glob($directory . "*");
 
         if ($files2) {

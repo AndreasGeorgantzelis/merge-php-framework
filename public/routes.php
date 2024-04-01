@@ -21,6 +21,6 @@ return [
     [
     "post",
         "/createuser",
-        new \app\Application\Service\UserManagement
+        new \app\Application\Controller\UserController
     ]
 ];

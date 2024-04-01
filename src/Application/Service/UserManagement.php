@@ -8,9 +8,10 @@ class UserManagement
     /**
      * @return void
      */
-    public function __invoke(): void {
+    public function create(): void {
         $userCreator = new CreateUser();
-        $userQuantity = $userCreator->countUsers();
-        echo $userQuantity;
+        $userCount= $userCreator->countUsers();
+        $userCreator->createUser($userCount+1);
     }
 }
+

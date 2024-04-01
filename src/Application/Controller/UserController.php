@@ -7,14 +7,9 @@ use app\Application\Service\UserManagement;
 
 final class UserController
 {
-
-
-    public function __construct(public UserManagement $userManager)
+    public function __invoke() : void
     {
-    }
-
-    public function __invoke($userInt) : void
-    {
-        $this->userManager->newUser();
+        $userManager = new UserManagement();
+        $userManager->create();
     }
 }
