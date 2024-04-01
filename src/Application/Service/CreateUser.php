@@ -8,7 +8,8 @@ class CreateUser
     /**
      * @return void
      */
-    public function create() {
+    public function create()
+    {
         $userFile = fopen("newfile.txt", "w") or die("Unable to open file!");
         $txt = "John Doe\n";
         fwrite($userFile, $txt);
@@ -20,14 +21,17 @@ class CreateUser
     /**
      * @return int
      */
-    public function countUsers() : int {
-        $directory = getcwd()."/../../../users";
-        $fileCount = 0;
-        $files2 = glob( $directory ."*" );
+    public function countUsers(): int
+    {
+        $directory = getcwd() . "/users/";
+        $filecount = 0;
 
-        if($files2) {
-            $fileCount = count($files2);
+        $files2 = glob($directory . "*");
+
+        if ($files2) {
+            $filecount = count($files2);
         }
-        return $fileCount;
+
+        return $filecount;
     }
 }

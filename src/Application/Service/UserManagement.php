@@ -4,16 +4,13 @@ declare(strict_types=1);
 namespace app\Application\Service;
 class UserManagement
 {
-    public CreateUser $userCreator;
-    public function __construct($userCreator) {
-        $this->userCreator = $userCreator;
-    }
 
     /**
      * @return void
      */
-    public function newUser(): void {
-        $userQuantity = $this->userCreator->countUsers();
+    public function __invoke(): void {
+        $userCreator = new CreateUser();
+        $userQuantity = $userCreator->countUsers();
         echo $userQuantity;
     }
 }

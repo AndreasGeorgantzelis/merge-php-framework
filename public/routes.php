@@ -17,5 +17,10 @@ return [
         function ($name) {
             echo 'Hello ' . htmlentities($name);
         }
+    ],
+    [
+    "post",
+        "/createuser",
+        new \app\Application\Service\UserManagement
     ]
 ];
