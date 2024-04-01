@@ -3,12 +3,14 @@ declare(strict_types=1);
 
 namespace app\Application\Service;
 
+use app\Data\UserData;
+
 class CreateUser
 {
     /**
      * @return void
      */
-    public function createUser(int $userCount)
+    public function createUser(int $userCount) : UserData
     {
         $directory = getcwd() . "/users/";
         $userFilePath = $directory . 'user' . $userCount . '.json';
@@ -23,6 +25,7 @@ class CreateUser
 ]';
         fwrite($userFile, $json);
         fclose($userFile);
+        return UserData::create($json);
     }
 
     /**
