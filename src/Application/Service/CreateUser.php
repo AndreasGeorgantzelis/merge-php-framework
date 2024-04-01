@@ -25,7 +25,8 @@ class CreateUser
 ]';
         fwrite($userFile, $json);
         fclose($userFile);
-        return UserData::create($json);
+        //json decode will be removed after i use payload json
+        return UserData::create(json_decode($json));
     }
 
     /**
