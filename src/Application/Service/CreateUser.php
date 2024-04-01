@@ -8,7 +8,8 @@ use app\Data\UserData;
 class CreateUser
 {
     /**
-     * @return void
+     * @param int $userCount
+     * @return UserData
      */
     public function createUser(int $userCount) : UserData
     {
