@@ -9,8 +9,9 @@ use app\Data\UserData;
 
 final class UserController
 {
-    public function __invoke(Request $request) : void
+    public function __invoke() : void
     {
+        $request = new Request();
         $userManager = new UserManagement();
         echo  json_encode($userManager->create($request));
     }

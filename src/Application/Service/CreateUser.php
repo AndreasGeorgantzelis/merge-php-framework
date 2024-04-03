@@ -17,11 +17,11 @@ class CreateUser
         $directory = getcwd() . "/users/";
         $userFilePath = $directory . 'user' . $userCount . '.json';
         $userFile = fopen($userFilePath, "w") or die("Unable to open file!");
-        $json = json_encode($request->getBody());
+        $json = $request->getBody();
         fwrite($userFile, $json);
         fclose($userFile);
         //json decode will be removed after i use payload json
-        return UserData::create(json_decode($json));
+        return UserData::create($json);
     }
 
     /**

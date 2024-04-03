@@ -8,12 +8,10 @@ class Request
         return strtolower($_SERVER['REQUEST_METHOD']);
     }
 
-    public function getBody() : array {
+    public function getBody() : string {
         $body = [];
         if ($this->getMethod() === 'post') {
-             foreach ($_POST as $key => $value) {
-                 $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-             }
+             $body = file_get_contents('php://input');
         }
         return $body;
     }

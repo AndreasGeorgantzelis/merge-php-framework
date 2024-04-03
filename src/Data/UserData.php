@@ -4,7 +4,7 @@ namespace app\Data;
 
 class UserData implements \JsonSerializable {
 
-    public array $newUserData;
+    public string $newUserData;
     public function __construct($newUserData)
     {
       $this->newUserData = $newUserData;
