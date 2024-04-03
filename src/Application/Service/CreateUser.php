@@ -11,19 +11,13 @@ class CreateUser
      * @param int $userCount
      * @return UserData
      */
-    public function createUser(int $userCount) : UserData
+    public function createUser(int $userCount,Request $request) : UserData
     {
+        var_dump($_POST);
         $directory = getcwd() . "/users/";
         $userFilePath = $directory . 'user' . $userCount . '.json';
         $userFile = fopen($userFilePath, "w") or die("Unable to open file!");
-        $json = '[
-    {
-      "username": "jane_smith",
-      "email": "jane@example.com",
-      "age": 25,
-      "city": "Los Angeles"
-    }
-]';
+        $json = json_encode($request->getBody());
         fwrite($userFile, $json);
         fclose($userFile);
         //json decode will be removed after i use payload json

@@ -1,4 +1,5 @@
 <?php
+use Bramus\Router\Router;
 
 return [
     [
@@ -19,8 +20,15 @@ return [
         }
     ],
     [
-    "post",
+        "post",
         "/createuser",
         new \app\Application\Controller\UserController
+    ],
+    [
+        "get",
+        "/([a-z0-9-]+)",
+        function()  {
+            echo 404;
+        }
     ]
 ];

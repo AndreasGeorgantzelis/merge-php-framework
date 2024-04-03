@@ -10,10 +10,10 @@ class UserManagement
     /**
      * @return void
      */
-    public function create(): UserData {
+    public function create($request): UserData {
         $userCreator = new CreateUser();
         $userCount= $userCreator->countUsers();
-        return $userCreator->createUser($userCount+1);
+        return $userCreator->createUser($userCount+1,$request);
     }
 }
 
