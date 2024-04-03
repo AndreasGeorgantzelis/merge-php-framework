@@ -4,7 +4,7 @@ namespace app\Application\Service;
 
 class Request
 {
-    public function getMethod() {
+    public function getMethod() : string {
         return strtolower($_SERVER['REQUEST_METHOD']);
     }
 

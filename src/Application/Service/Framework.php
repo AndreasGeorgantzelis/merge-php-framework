@@ -14,6 +14,7 @@ final class Framework
 
     public function run(): void
     {
+        $this->mergeRouter->mapRoutes();
         $this->mergeRouter->resolve();
     }
 }

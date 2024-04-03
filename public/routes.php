@@ -1,34 +1,30 @@
 <?php
-use Bramus\Router\Router;
 
 return [
     [
-        "get",
+        "GET",
         "/",
-        new \app\Application\Controller\HomeController
+        new \app\Application\Controller\HomeController,
+        'home'
     ],
     [
-        "get",
+        "GET",
         "/contact",
-        new \app\Application\Controller\ContactController
+        new \app\Application\Controller\ContactController,
+        'contact'
     ],
     [
-        "get",
-        "/hello/(\w+)",
-        function ($name) {
-            echo 'Hello ' . htmlentities($name);
-        }
+        "GET",
+        "/user/[i:id]",
+        function ($id) {
+            echo 'Hello user' . $id;
+        },
+        'dynamic rout'
     ],
     [
-        "post",
+        "POST",
         "/createuser",
-        new \app\Application\Controller\UserController
+        new \app\Application\Controller\UserController,
+        'user'
     ],
-    [
-        "get",
-        "/([a-z0-9-]+)",
-        function()  {
-            echo 404;
-        }
-    ]
 ];

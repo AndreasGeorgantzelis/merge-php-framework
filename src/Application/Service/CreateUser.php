@@ -13,7 +13,6 @@ class CreateUser
      */
     public function createUser(int $userCount,Request $request) : UserData
     {
-        var_dump($_POST);
         $directory = getcwd() . "/users/";
         $userFilePath = $directory . 'user' . $userCount . '.json';
         $userFile = fopen($userFilePath, "w") or die("Unable to open file!");
@@ -30,13 +29,13 @@ class CreateUser
     public function countUsers(): int
     {
         $directory = getcwd() . "/users/";
-        $filecount = 0;
+        $fileCount = 0;
         $files2 = glob($directory . "*");
 
         if ($files2) {
-            $filecount = count($files2);
+            $fileCount = count($files2);
         }
 
-        return $filecount;
+        return $fileCount;
     }
 }

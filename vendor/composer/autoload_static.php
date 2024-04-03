@@ -20,17 +20,8 @@ class ComposerStaticInitcdc540639fbf1cb4b940a9197d9773c3
         ),
     );
 
-    public static $prefixesPsr0 = array (
-        'B' => 
-        array (
-            'Bramus' => 
-            array (
-                0 => __DIR__ . '/..' . '/bramus/router/src',
-            ),
-        ),
-    );
-
     public static $classMap = array (
+        'AltoRouter' => __DIR__ . '/..' . '/altorouter/altorouter/AltoRouter.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
@@ -39,7 +30,6 @@ class ComposerStaticInitcdc540639fbf1cb4b940a9197d9773c3
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitcdc540639fbf1cb4b940a9197d9773c3::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitcdc540639fbf1cb4b940a9197d9773c3::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitcdc540639fbf1cb4b940a9197d9773c3::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitcdc540639fbf1cb4b940a9197d9773c3::$classMap;
 
         }, null, ClassLoader::class);
