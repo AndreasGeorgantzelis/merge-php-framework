@@ -8,12 +8,13 @@ class MergeRouter
 {
     protected array $routes;
     public AltoRouter $router;
+
+    public Response $response;
     public function __construct() {
+        $this->response = new Response();
         $this->router = new AltoRouter();
         $this->routes = require_once __DIR__ . '/../../../public/routes.php';
     }
-
-    //todo : maybe split the following to matchRout and resolve
     public function mapRoutes() : void {
         try {
             foreach ($this->routes as $routeDefinition) {
@@ -34,6 +35,7 @@ class MergeRouter
             call_user_func_array( $match['target'], $match['params'] );
         } else {
             // no route was matched
+            $this->response->setStatusCode(404);
             header( $_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
         }
     }
