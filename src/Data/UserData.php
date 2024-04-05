@@ -4,20 +4,27 @@ namespace app\Data;
 
 class UserData implements \JsonSerializable {
 
-    public string $newUserData;
-    public function __construct($newUserData)
+    public string $username;
+    public string $email;
+    public int $age;
+    public string $city;
+
+    public function __construct(string $username,string $email,int $age,string $city)
     {
-      $this->newUserData = $newUserData;
+        $this->username = $username;
+        $this->email = $email;
+        $this->age = $age;
+        $this->city = $city;
     }
 
-    public static function create($json) : UserData {
-        return new self($json);
+    public static function create(string $username,string $email,int $age,string $city) : UserData {
+        return new self($username,$email,$age,$city);
      }
 
      public function jsonSerialize() : array
      {
          return [
-             'newUser' => $this->newUserData
+             'newUser' => $this->username
          ];
      }
 

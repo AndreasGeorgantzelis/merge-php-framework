@@ -19,8 +19,9 @@ class CreateUser
         $json = $request->getBody();
         fwrite($userFile, $json);
         fclose($userFile);
-        //json decode will be removed after i use payload json
-        return UserData::create($json);
+        $decodedBody = json_decode($json)[0];
+
+        return UserData::create($decodedBody->username,$decodedBody->email,$decodedBody->age,$decodedBody->city);
     }
 
     /**
