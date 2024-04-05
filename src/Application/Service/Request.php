@@ -4,6 +4,9 @@ namespace app\Application\Service;
 
 class Request
 {
+    public function getPath() {
+        return $_SERVER['REQUEST_URI'] ?? '/';
+    }
     public function getMethod() : string {
         return strtolower($_SERVER['REQUEST_METHOD']);
     }
