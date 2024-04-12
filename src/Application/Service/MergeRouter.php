@@ -3,8 +3,9 @@ declare(strict_types=1);
 
 namespace app\Application\Service;
 use AltoRouter;
+use app\Application\Interfaces\RouterInterface;
 
-class MergeRouter
+class MergeRouter implements RouterInterface
 {
     protected array $routes;
     public AltoRouter $router;

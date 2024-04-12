@@ -5,16 +5,18 @@ namespace app\Application\Service;
 
 final class Framework
 {
-    public MergeRouter $mergeRouter;
+    public $factory;
+    public $router;
 
     public function __construct()
     {
-        $this->mergeRouter = new MergeRouter();
+        $this->factory = new RouterFactory();
+        $this->router =  $this->factory::create();
     }
 
     public function run(): void
     {
-        $this->mergeRouter->mapRoutes();
-        $this->mergeRouter->resolve();
+        $this->router->mapRoutes();
+        $this->router->resolve();
     }
 }
