@@ -15,6 +15,10 @@ class MergeRouter
         $this->router = new AltoRouter();
         $this->routes = require_once __DIR__ . '/../../../public/routes.php';
     }
+
+    public function addRoute(string $method, string $pattern, $target, string $name) : void {
+        $this->routes[] = [ $method , $pattern, $target , $name ];
+    }
     public function mapRoutes() : void {
         try {
             foreach ($this->routes as $routeDefinition) {

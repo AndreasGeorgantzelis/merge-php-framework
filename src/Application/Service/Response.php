@@ -12,13 +12,4 @@ class Response
     public function addHeader($name, $value){
         $this->headers[$name][] = $value;
     }
-    public function setHeader($name, $value){
-        $this->headers[$name] = [
-            (string) $value,
-        ];
-    }
-    public function redirect($url){
-        $this->setHeader('Location', $url);
-    }
-
 }
