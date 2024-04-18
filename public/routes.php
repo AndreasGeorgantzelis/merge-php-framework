@@ -10,7 +10,7 @@ return [
     [
         "GET",
         "/contact",
-        new \app\Application\Controller\ContactController,
+         new \app\Application\Controller\ContactController,
         'contact'
     ],
     [

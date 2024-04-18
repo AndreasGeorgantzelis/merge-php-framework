@@ -5,7 +5,7 @@ namespace app\Application\Middleware;
 use app\Application\Interfaces\MiddlewareInterface;
 use app\Application\Service\Request;
 
-class Middleware
+class Middleware implements MiddlewareInterface
 {
     private $nextHandler;
 
