@@ -14,6 +14,9 @@ class MiddlewareManagement
         $this->request = $request;
     }
 
+    /**
+     * @return void
+     */
     private static function loadMiddleware():void
     {
         if (is_file('middlewares.php')){
@@ -23,6 +26,10 @@ class MiddlewareManagement
         }
     }
 
+    /**
+     * @param $class
+     * @return false|mixed
+     */
     public static function handler($class)
     {
         $key = array_search($class, self::$middlewares['middlewares']);
@@ -31,6 +38,10 @@ class MiddlewareManagement
         }
         return false;
     }
+
+    /**
+     * @return void
+     */
     public function run()
     {
         self::loadMiddleware();

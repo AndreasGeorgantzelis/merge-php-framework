@@ -11,7 +11,6 @@ class AuthMiddleware
         if ($request->getBody() <= 200) {
             return "hello world";
         }
-
         return $request;
     }
 }

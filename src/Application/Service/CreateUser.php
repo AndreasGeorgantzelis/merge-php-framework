@@ -9,6 +9,7 @@ class CreateUser
 {
     /**
      * @param int $userCount
+     * @param Request $request
      * @return UserData
      */
     public function createUser(int $userCount,Request $request) : UserData

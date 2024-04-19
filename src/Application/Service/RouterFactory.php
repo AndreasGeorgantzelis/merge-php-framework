@@ -6,6 +6,9 @@ use app\Application\Interfaces\RouterInterface;
 
 class RouterFactory
 {
+    /**
+     * @return RouterInterface
+     */
     public static function create() : RouterInterface {
         if (class_exists('altorouter/altorouter')){
             return new MergeRouter();

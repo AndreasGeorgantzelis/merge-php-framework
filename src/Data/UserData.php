@@ -17,10 +17,20 @@ class UserData implements \JsonSerializable {
         $this->city = $city;
     }
 
+    /**
+     * @param string $username
+     * @param string $email
+     * @param int $age
+     * @param string $city
+     * @return UserData
+     */
     public static function create(string $username,string $email,int $age,string $city) : UserData {
         return new self($username,$email,$age,$city);
      }
 
+    /**
+     * @return string[]
+     */
      public function jsonSerialize() : array
      {
          return [

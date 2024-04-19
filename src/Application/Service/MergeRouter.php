@@ -9,7 +9,6 @@ class MergeRouter implements RouterInterface
 {
     protected array $routes;
     public AltoRouter $router;
-
     public Response $response;
     public function __construct() {
         $this->response = new Response();
@@ -17,9 +16,20 @@ class MergeRouter implements RouterInterface
         $this->routes = require_once __DIR__ . '/../../../public/routes.php';
     }
 
+    /**
+     * @param string $method
+     * @param string $pattern
+     * @param $target
+     * @param string $name
+     * @return void
+     */
     public function addRoute(string $method, string $pattern, $target, string $name) : void {
         $this->routes[] = [ $method , $pattern, $target , $name ];
     }
+
+    /**
+     * @return void
+     */
     public function mapRoutes() : void {
         try {
             foreach ($this->routes as $routeDefinition) {
@@ -34,6 +44,10 @@ class MergeRouter implements RouterInterface
             echo "Error mapping routes: " . $e->getMessage();
         }
     }
+
+    /**
+     * @return void
+     */
     public function resolve() : void {
         $match = $this->router->match();
         if( is_array($match) && is_callable( $match['target'] ) ) {

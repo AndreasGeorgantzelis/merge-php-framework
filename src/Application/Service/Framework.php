@@ -14,6 +14,9 @@ final class Framework
         $this->router =  $this->factory::create();
     }
 
+    /**
+     * @return void
+     */
     public function run(): void
     {
         $this->router->mapRoutes();

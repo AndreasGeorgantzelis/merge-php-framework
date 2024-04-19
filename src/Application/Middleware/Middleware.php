@@ -19,12 +19,19 @@ class Middleware implements MiddlewareInterface
         return $this->nextHandler;
     }
 
+    /**
+     * @param MiddlewareInterface $handler
+     * @return MiddlewareInterface
+     */
     public function setNext(MiddlewareInterface $handler): MiddlewareInterface
     {
         $this->setNextHandler($handler);
         return $handler;
     }
 
+    /**
+     * @return void
+     */
     private function implementHandler()
     {
         $handler = MiddlewareManagement::handler(get_class($this));
@@ -35,6 +42,10 @@ class Middleware implements MiddlewareInterface
         }
     }
 
+    /**
+     * @param Request $request
+     * @return null
+     */
     public function handle(Request $request){
         $this->implementHandler();
         if ($this->nextHandler) {
