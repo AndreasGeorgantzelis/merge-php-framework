@@ -2,7 +2,7 @@
 
 return [
     [
-        "POST",
+        "GET",
         "/",
         new \app\Application\Controller\HomeController,
         'home'
@@ -25,6 +25,12 @@ return [
         "POST",
         "/createuser",
         new \app\Application\Controller\UserController,
+        'user'
+    ],
+    [
+        "POST",
+        "/test",
+        new \app\Application\Controller\HomeController,
         'user'
     ],
 ];
