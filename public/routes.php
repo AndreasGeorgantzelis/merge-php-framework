@@ -2,7 +2,7 @@
 
 return [
     [
-        "GET",
+        "POST",
         "/",
         new \app\Application\Controller\HomeController,
         'home'

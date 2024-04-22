@@ -2,6 +2,6 @@
 <?php
 return [
     'middlewares'=>[
-       \app\Application\Middleware\Middleware::class
+       \app\Application\Middleware\TestMiddleware::class
     ]
 ];

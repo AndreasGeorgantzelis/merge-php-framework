@@ -19,7 +19,7 @@ class MiddlewareManagement
      */
     private static function loadMiddleware():void
     {
-        if (is_file('middlewares.php')){
+        if (is_file(__DIR__.'/middlewares.php')){
             self::$middlewares =  require_once('middlewares.php');
         }else{
             self::$middlewares =  [];
@@ -48,6 +48,7 @@ class MiddlewareManagement
 
         if (self::$middlewares['middlewares'][0]){
             $class = self::$middlewares['middlewares'][0];
+
             if (class_exists($class)){
                 $class = new $class;
                 if (method_exists($class, 'handle')){
