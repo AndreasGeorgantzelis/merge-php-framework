@@ -17,9 +17,9 @@ final class Framework
     /**
      * @return void
      */
-    public function run(): void
+    public function run(Request $request): void
     {
         $this->router->mapRoutes();
-        $this->router->resolve();
+        $this->router->resolve($request);
     }
 }
