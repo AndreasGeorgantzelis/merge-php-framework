@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace app\Application\Service;
 use AltoRouter;
 use app\Application\Interfaces\RouterInterface;
+use app\Application\Middleware\MiddlewareManagement;
 
 class MergeRouter implements RouterInterface
 {
@@ -37,7 +38,8 @@ class MergeRouter implements RouterInterface
                 $routePattern = $routeDefinition[1];
                 $target = $routeDefinition[2];
                 $name = $routeDefinition[3];
-                $this->router->map($method, $routePattern, $target, $name);
+                $middlewares = $routeDefinition[4];
+                $this->router->map($method, $routePattern, $target, $name, $middlewares);
             }
         } catch (\Exception $e) {
             // Handle or log the exception
@@ -46,16 +48,29 @@ class MergeRouter implements RouterInterface
     }
 
     /**
+     * @param Request $request
      * @return void
      */
-    public function resolve() : void {
+    public function resolve(Request $request) : void {
+
         $match = $this->router->match();
+        $this->runMiddlewares($request,$match);
+
         if( is_array($match) && is_callable( $match['target'] ) ) {
             call_user_func_array( $match['target'], $match['params'] );
         } else {
-            // no route was matched
             $this->response->setStatusCode(404);
             header( $_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
         }
+    }
+
+    /**
+     * @param Request $request
+     * @param $match
+     * @return void
+     */
+    public function runMiddlewares(Request $request,$match) {
+        $middleware = new MiddlewareManagement($request);
+        $middleware->run( $match['middlewares']);
     }
 }

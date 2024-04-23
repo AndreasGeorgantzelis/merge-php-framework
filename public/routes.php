@@ -31,6 +31,7 @@ return [
         "POST",
         "/test",
         new \app\Application\Controller\HomeController,
-        'user'
+        'test',
+        [new \app\Application\Middleware\TestMiddleware]
     ],
 ];

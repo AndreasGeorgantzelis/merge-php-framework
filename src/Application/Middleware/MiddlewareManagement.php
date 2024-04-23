@@ -17,10 +17,10 @@ class MiddlewareManagement
     /**
      * @return void
      */
-    private static function loadMiddleware():void
+    private static function loadMiddleware(array $middlewares):void
     {
-        if (is_file(__DIR__.'/middlewares.php')){
-            self::$middlewares =  require_once('middlewares.php');
+        if ($middlewares){
+            self::$middlewares =  $middlewares;
         }else{
             self::$middlewares =  [];
         }
@@ -42,14 +42,13 @@ class MiddlewareManagement
     /**
      * @return void
      */
-    public function run()
+    public function run(array $middlewares)
     {
-        self::loadMiddleware();
+        self::loadMiddleware($middlewares);
+        if (self::$middlewares[0]){
+            $class = self::$middlewares[0];
 
-        if (self::$middlewares['middlewares'][0]){
-            $class = self::$middlewares['middlewares'][0];
-
-            if (class_exists($class)){
+            if ($class){
                 $class = new $class;
                 if (method_exists($class, 'handle')){
                     $class->handle($this->request);
